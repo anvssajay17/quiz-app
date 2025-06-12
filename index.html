@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+    }
+
+    .homepage {
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .title {
+      color: #2f3640;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #40739e;
+      color: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card:hover {
+      background-color: #3498db;
+    }
+
+    .question-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .loading {
+      color: #f39c12;
+      font-weight: bold;
+    }
+
+    .question {
+      color: #2c3e50;
+      font-size: 20px;
+    }
+
+    .hint {
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React and Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Your React Component -->
+  <script type="text/babel">
+    const { useState } = React;
+
+    const categories = [
+      "Python", "JavaScript", "React", "SQL", "Java",
+      "C++", "TypeScript", "PHP", "Go", "HTML"
+    ];
+
+    const HomePage = () => {
+      const [question, setQuestion] = useState(null);
+      const [loading, setLoading] = useState(false);
+
+      const fetchQuestion = async (index) => {
+        const categoryId = index + 1;
+        try {
+          setLoading(true);
+          const res = await axios.get(`http://localhost:5000/api/question?category=${categoryId}`);
+          setQuestion(res.data.question);
+        } catch (err) {
+          setQuestion("Error fetching question.");
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      return (
+        <div className="homepage">
+          <h1 className="title">Programming Quiz</h1>
+
+          <div className="card-grid">
+            {categories.map((name, index) => (
+              <div
+                className="card"
+                key={name}
+                onClick={() => fetchQuestion(index)}
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+
+          <div className="question-box">
+            {loading ? (
+              <p className="loading">Loading question...</p>
+            ) : question ? (
+              <p className="question">{question}</p>
+            ) : (
+              <p className="hint">Click a language card to start the quiz.</p>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<HomePage />);
+  </script>
+</body>
+</html>

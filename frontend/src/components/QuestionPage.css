@@ -1,0 +1,98 @@
+.question-page {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.question-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.question-text {
+  font-size: 20px;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #f39c12;
+}
+
+.no-question {
+  font-size: 18px;
+  color: #e74c3c;
+}
+
+.option-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.option-item {
+  font-size: 18px;
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-item:hover {
+  background-color: #e1f5fe;
+}
+
+.option-item.selected {
+  background-color: #d0ebff;
+  border: 2px solid #007bff;
+  font-weight: bold;
+}
+
+.selected-info {
+  margin-top: 10px;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.button-group {
+  margin-top: 30px;
+}
+
+.next-btn,
+.back-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.2s ease;
+}
+
+.next-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.next-btn:hover {
+  background-color: #2980b9;
+}
+
+.back-btn {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #7f8c8d;
+}
