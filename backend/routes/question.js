@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 
   const query = `
-    SELECT id, question, option_a, option_b, option_c, option_d,category_id
+    SELECT id, question, option_a, option_b, option_c, option_d,category_id,explanation,correct_option
     FROM questions
     WHERE category_id = ?
     ORDER BY RAND()
@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
     if (results.length === 0) {
       return res.status(404).json({ error: 'No questions found for this category' });
     }
+     console.log('✅ Sending question from DB:', results[0]);
 
     res.json(results[0]);
   } catch (err) {

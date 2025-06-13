@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import db from './db.js';
 import authRoutes from './routes/auth.js';
 import questionRoutes from './routes/question.js';
+import attemptRoutes from './routes/attempt.js';
+import statsRoute from './routes/stats.js';
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use(express.json());
 
 app.use('/question', questionRoutes);
 app.use('/auth', authRoutes);
+app.use('/attempt',attemptRoutes);
+app.use('/stats', statsRoute);
 
 app.get('/', (req, res) => {
   res.status(200).send('✅ Server is up and running!');
