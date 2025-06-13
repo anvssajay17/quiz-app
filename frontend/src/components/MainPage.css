@@ -163,22 +163,15 @@ body, html {
 }
 .overview-heading {
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: -30px;
-  animation: fadeIn 0.8s ease-in-out;
+  margin-top: 30px;
 }
 
 .overview-title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: #4a148c;
-  margin-bottom: 8px;
 }
 
-.overview-subtext {
-  font-size: 16px;
-  color: var(--text-light);
-}
 
 
 @keyframes fadeIn {
