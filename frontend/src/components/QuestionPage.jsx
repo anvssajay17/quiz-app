@@ -16,7 +16,7 @@ const QuestionPage = ({ question, fetchNextQuestion, loading }) => {
     accuracy: 0,
   });
 
-  // ✅ Fetch stats for a given category
+ 
   const fetchStats = async (category_id) => {
     try {
       const res = await fetch(`http://localhost:3500/stats/${category_id}`, {
@@ -35,7 +35,7 @@ const QuestionPage = ({ question, fetchNextQuestion, loading }) => {
     }
   };
 
-  // ✅ On question prop change
+  
   useEffect(() => {
     if (question) {
       setCurrentQuestion(question);
@@ -56,14 +56,14 @@ const QuestionPage = ({ question, fetchNextQuestion, loading }) => {
     }
   }, [question]);
 
-  // ✅ Save current question locally
+ 
   useEffect(() => {
     if (currentQuestion) {
       localStorage.setItem('lastQuestion', JSON.stringify(currentQuestion));
     }
   }, [currentQuestion]);
 
-  // ✅ Fetch stats once on mount
+
   useEffect(() => {
     const tryFetchStats = async () => {
       if (question?.category_id) {
@@ -107,7 +107,7 @@ const QuestionPage = ({ question, fetchNextQuestion, loading }) => {
         }),
       });
 
-      // ✅ Refetch stats after answer
+    
       fetchStats(currentQuestion.category_id);
     } catch (err) {
       console.error('❌ Failed to record attempt:', err.message);

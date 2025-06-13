@@ -19,7 +19,7 @@ const verifyToken = (req, res, next) => {
       return res.status(403).json({ error: 'Invalid token payload: missing user id' });
     }
 
-    req.user = { id: decoded.id }; // ✅ Store user_id for access in routes
+    req.user = { id: decoded.id }; 
     next();
   } catch (err) {
     console.error('❌ Token error:', err.message);

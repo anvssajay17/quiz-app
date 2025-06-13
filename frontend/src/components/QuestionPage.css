@@ -7,6 +7,21 @@
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+  /* 👇 Smooth fade-in on load */
+  opacity: 0;
+  animation: fadeInQuestion 0.8s ease-out forwards;
+}
+
+@keyframes fadeInQuestion {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .question-title {
@@ -146,5 +161,5 @@
   font-size: 16px;
   color: #2c3e50;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }

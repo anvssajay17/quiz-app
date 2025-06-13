@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.js';
 import questionRoutes from './routes/question.js';
 import attemptRoutes from './routes/attempt.js';
 import statsRoute from './routes/stats.js';
+import entryRoutes from './routes/entry.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use('/question', questionRoutes);
 app.use('/auth', authRoutes);
 app.use('/attempt',attemptRoutes);
 app.use('/stats', statsRoute);
+app.use('/entry', entryRoutes);
 
 app.get('/', (req, res) => {
   res.status(200).send('✅ Server is up and running!');

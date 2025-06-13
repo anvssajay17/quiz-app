@@ -4,7 +4,6 @@ import verifyToken from '../middleware/verifyToken.js';
 
 const router = Router();
 
-// ✅ GET /stats/:category_id - fetch stats
 router.get('/:category_id', verifyToken, async (req, res) => {
   const userId = req.user.id;
   const categoryId = parseInt(req.params.category_id);
